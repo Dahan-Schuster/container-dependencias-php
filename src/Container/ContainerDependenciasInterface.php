@@ -2,6 +2,8 @@
 
 namespace CD\Container;
 
+use Closure;
+
 /**
  * Interface ContainerDependenciasInterface
  * Define os métodos necessários para a implementação 
@@ -58,7 +60,7 @@ interface ContainerDependenciasInterface {
      * @author Dahan Schuster <dahan@moobitech.com.br>
      * @since 1.0.0 - Definição do versionamento da classe
      */
-    public function set(string $sChave, $mValor);
+    public function set(string $sChave, Closure $fnFuncao);
 
     /**
      * Define um valor dentro do container que pode ser
@@ -78,7 +80,7 @@ interface ContainerDependenciasInterface {
      * @author Dahan Schuster <dahan@moobitech.com.br>
      * @since 1.0.0 - Definição do versionamento da classe
      */
-    public function singleton(string $sChave, $mValor);
+    public function singleton(string $sChave, Closure $fnFuncao);
 
     
 

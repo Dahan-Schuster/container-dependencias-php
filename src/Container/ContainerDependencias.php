@@ -4,6 +4,12 @@ namespace CD\Container;
 
 use Closure;
 
+/**
+ * Classe ContainerDependencias
+ *
+ * @package CD\Container
+ * @version 1.0.0 - Versionamento inicial da classe
+ */
 class ContainerDependencias implements ContainerDependenciasInterface {
 
     /** 
@@ -12,10 +18,7 @@ class ContainerDependencias implements ContainerDependenciasInterface {
      * @var array
      */
     private static $aDependecias = [];
-
-    public function __construct() {
-        // TODO: Implementar corpo do método
-    }
+    
     
     /**
      * Retorna um booleano que representa a presença um
@@ -89,7 +92,7 @@ class ContainerDependencias implements ContainerDependenciasInterface {
      * @author Dahan Schuster <dahan@moobitech.com.br>
      * @since 1.0.0 - Definição do versionamento da classe
      */
-    public function singleton(string $sChave, $mValor) {
+    public function singleton(string $sChave, Closure $fnFuncao) {
         // TODO: Implementar corpo do método
     }
 
