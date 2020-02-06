@@ -1,8 +1,6 @@
 # Container de Dependências em PHP
 
-## Implementação de uma classe ContainerDependecias que implenta uma interface
-
-seguindo a PSR-11
+## Implementação de uma classe ContainerDependecias que implenta uma interface seguindo a PSR-11
 
 Os métodos assinados pela interface ContainerDependenciasInterface são:
 
