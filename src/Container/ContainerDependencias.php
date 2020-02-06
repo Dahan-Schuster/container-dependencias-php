@@ -1,6 +1,6 @@
 <?php
 
-namespace Trainee\Login\Container;
+namespace CD\Container;
 
 use Closure;
 
