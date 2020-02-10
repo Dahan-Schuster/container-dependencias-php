@@ -12,6 +12,8 @@ use Demo\Repositories\LeadRepository;
  * @version 1.0.0
  */
 class UserController {
+	
+	public $iNumber;
 
     /** @var TagRepository */
     protected $oTagRepository;
@@ -34,6 +36,7 @@ class UserController {
 
     public function index() : void {
         var_dump(
+        	$this->iNumber,
             $this->oTagRepository->findById(1),
             $this->oUserRepository->findById(2),
             $this->oLeadRepository->findById(3)
