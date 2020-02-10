@@ -38,13 +38,12 @@ class ContainerDependencias implements ContainerDependenciasInterface {
      * @since 1.0.0 - Definição do versionamento da classe
      */
     public function has(string $sChave): bool {
-        // TODO: Implementar corpo do método
-        return false;
+       return isset(self::$aDependecias[$sChave]);
     }
 
     /**
-     * Retorna o valor, dentro do container, associado à 
-     * chave enviada por parâmetro
+     * Invoca a Closure definida em uma chave do container
+	 * e retorna seu resultado
      * 
      * @param string $sChave
      * 
@@ -55,11 +54,11 @@ class ContainerDependencias implements ContainerDependenciasInterface {
      * @since 1.0.0 - Definição do versionamento da classe
      */
     public function get(string $sChave) {
-        // TODO: Implementar corpo do método
+        return (self::$aDependecias[$sChave])($this);
     }
 
     /**
-     * Define um valor dentro do container que pode ser
+     * Define uma função anônima dentro do container que pode ser
      * acessado atráves da chave definida no primeiro parâmetro
      * 
      * @param string $sChave
@@ -70,8 +69,8 @@ class ContainerDependencias implements ContainerDependenciasInterface {
      * @author Dahan Schuster <dahan@moobitech.com.br>
      * @since 1.0.0 - Definição do versionamento da classe
      */
-    public function set(string $sChave, Closure $fnFuncao) {
-        // TODO: Implementar corpo do método
+    public function set(string $sChave, Closure $fnFuncao): void {
+        self::$aDependecias[$sChave] = $fnFuncao;
     }
     
     /**
@@ -93,7 +92,15 @@ class ContainerDependencias implements ContainerDependenciasInterface {
      * @since 1.0.0 - Definição do versionamento da classe
      */
     public function singleton(string $sChave, Closure $fnFuncao) {
-        // TODO: Implementar corpo do método
+		self::$aDependecias[$sChave] = function() use ($fnFuncao) {
+			static $fnFuncaoSingleton;
+			
+			if (is_null($fnFuncaoSingleton)) {
+				$fnFuncaoSingleton = $fnFuncao($this);
+			}
+			
+			return $fnFuncaoSingleton;
+		};
     }
 
 }
