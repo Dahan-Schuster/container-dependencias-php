@@ -10,8 +10,7 @@ use Closure;
  * de uma classe container de dependências 
  * 
  * @author Dahan Schuster <dahan@moobitech.com.br>
- * @version 1.0.0 - Versionamento inicial da classe
- * 
+ * @version 2.0.0
  */
 interface ContainerDependenciasInterface {
 
@@ -23,44 +22,46 @@ interface ContainerDependenciasInterface {
      * Se has($sChave) retornar true, então não há nenhum 
      * valor no container associado a $sChave e, portanto,
      * get($sChave) irá lançar uma NotFoundExceptionInterface
-     * @see ContainerDependenciasInterface::get($sChave)
-     * 
-     * @param string $sChave
-     * 
+     * @param string $sClasse
+     *
      * @return bool
+     *
+     * @see ContainerDependenciasInterface::get($sChave)
      * 
      * @author Dahan Schuster <dahan@moobitech.com.br>
      * @since 1.0.0 - Definição do versionamento da classe
+	 * @since 2.0.0 - Contexto alterado para estático
      */
-    public function has(string $sChave): bool;
+    public static function has(string $sClasse): bool;
 
     /**
      * Retorna o valor, dentro do container, associado à 
      * chave enviada por parâmetro
      * 
-     * @param string $sChave
+     * @param string $sClasse
      * 
      * @return mixed
-     * @throws NotFoundExceptionInterface
      * 
      * @author Dahan Schuster <dahan@moobitech.com.br>
      * @since 1.0.0 - Definição do versionamento da classe
+	 * @since 2.0.0 - Contexto alterado para estático
      */
-    public function get(string $sChave);
+    public static function get(string $sClasse);
 
     /**
      * Define um valor dentro do container que pode ser
      * acessado atráves da chave definida no primeiro parâmetro
      * 
-     * @param string $sChave
+     * @param string $sClasse
      * @param Closure $fnFuncao
      * 
      * @return void
      * 
      * @author Dahan Schuster <dahan@moobitech.com.br>
      * @since 1.0.0 - Definição do versionamento da classe
+	 * @since 2.0.0 - Contexto alterado para estático
      */
-    public function set(string $sChave, Closure $fnFuncao);
+    public static function set(string $sClasse, Closure $fnFuncao);
 
     /**
      * Define um valor dentro do container que pode ser
@@ -72,16 +73,15 @@ interface ContainerDependenciasInterface {
      * instância do mesmo valor, sendo compartilhado por todas as
      * chamadas
      * 
-     * @param string $sChave
+     * @param string $sClasse
      * @param Closure $fnFuncao
      * 
      * @return void
      * 
      * @author Dahan Schuster <dahan@moobitech.com.br>
      * @since 1.0.0 - Definição do versionamento da classe
+	 * @since 2.0.0 - Contexto alterado para estático
      */
-    public function singleton(string $sChave, Closure $fnFuncao);
-
+    public static function singleton(string $sClasse, Closure $fnFuncao);
     
-
 }
