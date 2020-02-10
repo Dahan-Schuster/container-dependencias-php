@@ -36,8 +36,9 @@ class ContainerDependencias implements ContainerDependenciasInterface {
      * 
      * @author Dahan Schuster <dahan@moobitech.com.br>
      * @since 1.0.0 - Definição do versionamento da classe
+     * @since 2.0.0 - Contexto alterado para estático
      */
-    public function has(string $sChave): bool {
+    public static function has(string $sChave): bool {
        return isset(self::$aDependecias[$sChave]);
     }
 
@@ -52,8 +53,9 @@ class ContainerDependencias implements ContainerDependenciasInterface {
      * 
      * @author Dahan Schuster <dahan@moobitech.com.br>
      * @since 1.0.0 - Definição do versionamento da classe
+     * @since 2.0.0 - Contexto alterado para estático
      */
-    public function get(string $sChave) {
+    public static function get(string $sChave) {
         return (self::$aDependecias[$sChave])($this);
     }
 
@@ -68,8 +70,9 @@ class ContainerDependencias implements ContainerDependenciasInterface {
      * 
      * @author Dahan Schuster <dahan@moobitech.com.br>
      * @since 1.0.0 - Definição do versionamento da classe
+     * @since 2.0.0 - Contexto alterado para estático
      */
-    public function set(string $sChave, Closure $fnFuncao): void {
+    public static function set(string $sChave, Closure $fnFuncao): void {
         self::$aDependecias[$sChave] = $fnFuncao;
     }
     
@@ -90,8 +93,9 @@ class ContainerDependencias implements ContainerDependenciasInterface {
      * 
      * @author Dahan Schuster <dahan@moobitech.com.br>
      * @since 1.0.0 - Definição do versionamento da classe
+     * @since 2.0.0 - Contexto alterado para estático
      */
-    public function singleton(string $sChave, Closure $fnFuncao) {
+    public static function singleton(string $sChave, Closure $fnFuncao) {
 		self::$aDependecias[$sChave] = function() use ($fnFuncao) {
 			static $fnFuncaoSingleton;
 			

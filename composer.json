@@ -1,10 +1,9 @@
 {
-    "name": "kennedytedesco/blog-artigo-di",
+    "name": "dahan-schuster/container-dependencias",
+    "description": "Implementação de um container de dependências com autowiring",
     "autoload": {
         "psr-4": {
-            "CD\\Container\\": "src/Container/",
-            "Demo\\Controller\\" : "src/Http/Controller/",
-            "Demo\\Repositories\\" : "src/model/Repository/"
+            "CD\\Container\\": "Container/"
         }
     }
 }
