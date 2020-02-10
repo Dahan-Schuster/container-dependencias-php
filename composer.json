@@ -2,7 +2,9 @@
     "name": "kennedytedesco/blog-artigo-di",
     "autoload": {
         "psr-4": {
-            "App\\": "app"
+            "CD\\Container\\": "src/Container/",
+            "Demo\\Controller\\" : "src/Http/Controller/",
+            "Demo\\Repositories\\" : "src/model/Repository/"
         }
     }
 }
