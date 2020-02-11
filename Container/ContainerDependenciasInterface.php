@@ -39,7 +39,7 @@ interface ContainerDependenciasInterface {
      * chave enviada por parâmetro
      * 
      * @param string $sClasse
-     * 
+     * @throws ContainerExceptionInterface
      * @return mixed
      * 
      * @author Dahan Schuster <dahan@moobitech.com.br>

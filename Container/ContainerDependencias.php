@@ -3,10 +3,12 @@
 namespace CD\Container;
 
 use Closure;
+use ContainerException;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
 use ReflectionParameter;
+use Throwable;
 
 /**
  * Classe ContainerDependencias
@@ -50,7 +52,7 @@ class ContainerDependencias implements ContainerDependenciasInterface {
 	 * e retorna seu resultado
 	 *
 	 * @param string $sClasse
-	 * @throws ReflectionException
+	 * @throws ContainerException
 	 *
 	 * @return mixed
 	 *
@@ -59,11 +61,15 @@ class ContainerDependencias implements ContainerDependenciasInterface {
 	 * @since 2.0.0 - Contexto alterado para estático
 	 */
     public static function get(string $sClasse) {
-        if (self::has($sClasse)) {
-        	return (self::$aDependecias[$sClasse])();
+		if (self::has($sClasse)) {
+			return (self::$aDependecias[$sClasse])();
 		}
-    
-        return self::resolverDependenciasDaClasse($sClasse);
+		
+		try {
+			return self::resolverDependenciasDaClasse($sClasse);
+		} catch (Throwable $e) {
+			throw new ContainerException('Ocorreu um erro ao tentar realizar o autowiring', $e->getCode(), $e);
+		}
     }
 	
 	/**
